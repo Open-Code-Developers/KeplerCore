@@ -38,7 +38,7 @@ public class RenderHelper
 		};
 
 		renderItem.setRenderManager(RenderManager.instance);
-		renderItem.doRenderItem(entityItem, 0, 0.14, 0, 0, 0);
+		renderItem.doRenderItem(entityItem, 0, 0.14, -0.14, 0, 0);
 
 		GL11.glScaled(d1, d1, d1);
 	}
