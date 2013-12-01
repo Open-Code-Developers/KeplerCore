@@ -1,4 +1,4 @@
-package net.keplercore.common.schematic;
+package net.keplercore.lib.schematic.copy;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockFluid;

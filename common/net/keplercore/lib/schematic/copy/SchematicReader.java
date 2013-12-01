@@ -1,4 +1,4 @@
-package net.keplercore.common.schematic;
+package net.keplercore.lib.schematic.copy;
 
 import java.io.IOException;
 import java.io.InputStream;
