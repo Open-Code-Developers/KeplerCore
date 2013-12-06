@@ -236,7 +236,7 @@
 
         </target>
 
-        <target name="test-run" depends="compile,run"/>
+        <target name="test" depends="compile,run"/>
 
         <!-- Default target to run -->
         <target name="main" depends="package"/>
