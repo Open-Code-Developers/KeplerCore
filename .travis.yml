@@ -5,6 +5,7 @@ jdk:
   - openjdk6
 before_install:
   - chmod +x gradlew
+  - sudo apt-get install gradle
 install:
   - true
 before_script:
