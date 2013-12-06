@@ -1,0 +1,12 @@
+language: java
+jdk:
+  - oraclejdk7
+  - openjdk7
+  - openjdk6
+before_install:
+  - chmod +x gradlew
+install:
+  - true
+before_script:
+  - TERM=dumb ./gradlew setupCIWorkspace
+script: TERM=dumb ./gradlew buildNeeded
