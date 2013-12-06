@@ -204,7 +204,7 @@
                 </copy>
 
                 <!-- Reset src dir to post-forge-install state -->
-                <delete dir="${mcpsrc.dir}/minecraft/keplercore"/>
+                <delete dir="${mcpsrc.dir}/minecraft/net/keplercore"/>
 
         </target>
 
