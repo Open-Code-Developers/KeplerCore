@@ -1,4 +1,4 @@
-<project name="BuildCraft" default="main">
+<project name="KeplerCore" default="main">
         <property environment="env"/>
         <!-- Properties -->
 
