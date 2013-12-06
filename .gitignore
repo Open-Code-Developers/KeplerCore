@@ -4,3 +4,8 @@
 *.jar
 *.war
 *.ear
+
+# Build stuff #
+bin/*
+build/*
+download/*
