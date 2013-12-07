@@ -1,4 +1,4 @@
-package net.keplercore.lib.schematic;
+package net.keplercore.lib.schematic.copy;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockFluid;
@@ -70,7 +70,7 @@ public class SchematicBlock implements Comparable<SchematicBlock>
 	@Override
 	public int compareTo(SchematicBlock other)
 	{
-		if (isFluid() && !other.isFluid())
+		if ((isFluid() && !other.isFluid()))
 		{
 			return 1;
 		}
@@ -79,7 +79,7 @@ public class SchematicBlock implements Comparable<SchematicBlock>
 			return -1;
 		}
 
-		return j - other.j;
+		return Integer.compare(j, other.j);
 	}
 
 	@Override

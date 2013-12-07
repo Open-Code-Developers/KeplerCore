@@ -2,27 +2,10 @@
 
 # Package Files #
 *.jar
-!gradle/wrapper/gradle-wrapper.jar
 *.war
 *.ear
 
-# gradle
-.gradle
-build
-gradle-app.setting
-
-
-# eclipse
-.settings
-.metadata
-.classpath
-.project
-bin
-eclipse
-
-# intellij
-out
-*.idea
-*.iml
-*.ipr
-*.iws
+# Build stuff #
+bin/*
+build/*
+download/*
