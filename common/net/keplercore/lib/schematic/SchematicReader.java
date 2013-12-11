@@ -9,6 +9,9 @@ import java.util.Map;
 import net.minecraft.nbt.CompressedStreamTools;
 import net.minecraft.nbt.NBTTagCompound;
 
+/**
+ * @author crazyputje
+ */
 public class SchematicReader
 {
 

@@ -5,7 +5,9 @@ import net.minecraft.block.BlockFluid;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 
-
+/**
+ * @author crazyputje
+ */
 public class SchematicBlock implements Comparable<SchematicBlock>
 {
 
