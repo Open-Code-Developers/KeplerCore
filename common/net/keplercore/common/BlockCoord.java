@@ -2,6 +2,7 @@ package net.keplercore.common;
 
 import java.util.ArrayList;
 
+import net.minecraft.block.material.Material;
 import net.minecraft.world.World;
 import net.minecraftforge.common.ForgeDirection;
 
@@ -129,5 +130,20 @@ public class BlockCoord
     public boolean setBlock(World world, int blockID, int blockMeta, int updateFlag)
     {
         return world.setBlock(x, y, z, blockID, blockMeta, updateFlag);
+    }
+
+    public Material getBlockMaterial(World world)
+    {
+        return world.getBlockMaterial(x, y, z);
+    }
+
+    public int getBlockId(World world)
+    {
+        return world.getBlockId(x, y, z);
+    }
+
+    public int getBlockMetadata(World world)
+    {
+        return world.getBlockMetadata(x, y, z);
     }
 }
