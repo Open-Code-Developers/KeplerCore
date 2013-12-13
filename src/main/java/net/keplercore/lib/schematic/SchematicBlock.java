@@ -5,9 +5,7 @@ import net.minecraft.block.BlockFluid;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 
-/**
- * @author crazyputje
- */
+
 public class SchematicBlock implements Comparable<SchematicBlock>
 {
 
@@ -72,7 +70,7 @@ public class SchematicBlock implements Comparable<SchematicBlock>
 	@Override
 	public int compareTo(SchematicBlock other)
 	{
-		if ((isFluid() && !other.isFluid()))
+		if (isFluid() && !other.isFluid())
 		{
 			return 1;
 		}
@@ -81,7 +79,7 @@ public class SchematicBlock implements Comparable<SchematicBlock>
 			return -1;
 		}
 
-		return Integer.compare(j, other.j);
+		return j - other.j;
 	}
 
 	@Override
