@@ -13,7 +13,7 @@ class ArrayHelperTest extends FlatSpec with Matchers {
     val old2 = "a"
     val old3 = "new"
     val old4 = "array"
-    ArrayHelper.joinStringArray(old1, old2, old3, old4) should be theSameInstanceAs Array(String)
+    ArrayHelper.joinStringArray(old1, old2, old3, old4) shouldBe Array("this", "is", "a", "new", "array")
   }
 
 }
