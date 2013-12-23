@@ -4,6 +4,7 @@ import org.scalatest._
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
 import net.keplercore.common.BlockCoord
+import net.minecraftforge.common.ForgeDirection
 
 @RunWith(classOf[JUnitRunner])
 class BlockCoordTest extends FlatSpec with Matchers {
@@ -13,10 +14,15 @@ class BlockCoordTest extends FlatSpec with Matchers {
     coord.toString shouldBe "[0 0 0]"
   }
 
-  "A Block Coordinate in an array of integers" should "returned in String form." in {
+  "A Block Coordinate in the form of an array of integers" should "returned in String form." in {
     val coordArray = Array(0, 0, 0)
     val coord = new BlockCoord(coordArray)
     coord.toString shouldBe "[0 0 0]"
+  }
+
+  "A Block Coordinate supplied by a ForgeDirection" should "be returned in String form." in {
+    val coord = new BlockCoord(ForgeDirection.getOrientation(1))
+    coord.toString shouldBe "[0 1 0]"
   }
 
 }
