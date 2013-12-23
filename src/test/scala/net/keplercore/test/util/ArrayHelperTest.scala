@@ -7,4 +7,8 @@ import org.scalatest.junit.JUnitRunner
 @RunWith(classOf[JUnitRunner])
 object ArrayHelperTest extends FlatSpec with Matchers {
 
+  "ArrayHelper" should "return a String array when joinStringArray is called." in {
+    
+  }
+
 }
