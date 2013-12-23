@@ -5,6 +5,9 @@ jdk:
   - openjdk7
   - openjdk6
   
+install:
+- true
+  
 env:
 - TERM=dumb
 
