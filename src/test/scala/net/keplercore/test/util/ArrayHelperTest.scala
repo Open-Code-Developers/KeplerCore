@@ -6,7 +6,7 @@ import org.scalatest.junit.JUnitRunner
 import net.keplercore.util.ArrayHelper
 
 @RunWith(classOf[JUnitRunner])
-object ArrayHelperTest extends FlatSpec with Matchers {
+class ArrayHelperTest extends FlatSpec with Matchers {
 
   "ArrayHelper" should "return a String array when joinStringArray is called." in {
     val old1 = Array("this", "is")
