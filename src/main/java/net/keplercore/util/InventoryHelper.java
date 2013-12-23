@@ -1,4 +1,4 @@
-package net.keplercore.common;
+package net.keplercore.util;
 
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.inventory.IInventory;

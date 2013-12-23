@@ -1,4 +1,4 @@
-package net.keplercore.common;
+package net.keplercore.util;
 
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
