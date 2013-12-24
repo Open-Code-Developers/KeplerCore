@@ -1,11 +1,11 @@
-package net.keplercore.client.render;
+package net.keplercore.client.render
 
-import net.minecraft.client.renderer.entity.RenderItem;
-import net.minecraft.client.renderer.entity.RenderManager;
-import net.minecraft.entity.item.EntityItem;
-import net.minecraft.item.ItemStack;
+import net.minecraft.client.renderer.entity.RenderItem
+import net.minecraft.client.renderer.entity.RenderManager
+import net.minecraft.entity.item.EntityItem
+import net.minecraft.item.ItemStack
 
-import org.lwjgl.opengl.GL11;
+import org.lwjgl.opengl.GL11
 
 /**
  * 
