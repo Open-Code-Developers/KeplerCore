@@ -13,11 +13,11 @@ object InventoryHelper
 			return
 		}
 
-		float f1 = 0.7F
-		double d = (world.rand.nextFloat() * f1) + (1.0F - f1) * 0.5D
-		double d1 = (world.rand.nextFloat() * f1) + (1.0F - f1) * 0.5D
-		double d2 = (world.rand.nextFloat() * f1) + (1.0F - f1) * 0.5D
-		EntityItem entityitem = new EntityItem(world, i + d, j + d1, k + d2, stack)
+    val f1: Float = 0.7F
+		val d: Double = (world.rand.nextFloat() * f1) + (1.0F - f1) * 0.5D
+		val d1: Double = (world.rand.nextFloat() * f1) + (1.0F - f1) * 0.5D
+		val d2: Double = (world.rand.nextFloat() * f1) + (1.0F - f1) * 0.5D
+		val entityitem: EntityItem = new EntityItem(world, i + d, j + d1, k + d2, stack)
 		entityitem.delayBeforeCanPickup = 10
 
 		world.spawnEntityInWorld(entityitem)
