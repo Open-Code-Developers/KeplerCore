@@ -19,6 +19,11 @@ class BlockCoordTest extends FlatSpec with Matchers {
     coord.hashCode() shouldBe 8421504
   }
 
+  it should "be returned if cloned." in {
+    val coord = new BlockCoord(0, 0, 0)
+    coord.clone() shouldBe new BlockCoord(0, 0, 0)
+  }
+
   "A Block Coordinate in the form of an array of integers" should "returned in String form." in {
     val coordArray = Array(0, 0, 0)
     val coord = new BlockCoord(coordArray)
@@ -26,8 +31,15 @@ class BlockCoordTest extends FlatSpec with Matchers {
   }
 
   it should "be returned in Hash form." in {
-    val coord = new BlockCoord(0, 0, 0)
+    val coordArray = Array(0, 0, 0)
+    val coord = new BlockCoord(coordArray)
     coord.hashCode() shouldBe 8421504
+  }
+
+  it should "be returned if cloned." in {
+    val coordArray = Array(0, 0, 0)
+    val coord = new BlockCoord(coordArray)
+    coord.clone() shouldBe new BlockCoord(0, 0, 0)
   }
 
   "A Block Coordinate supplied by a ForgeDirection" should "be returned in String form." in {
@@ -38,6 +50,11 @@ class BlockCoordTest extends FlatSpec with Matchers {
   it should "be returned in Hash form." in {
     val coord = new BlockCoord(0, 0, 0)
     coord.hashCode() shouldBe 8421504
+  }
+
+  it should "be returned if cloned." in {
+    val coord = new BlockCoord(ForgeDirection.getOrientation(1))
+    coord.clone() shouldBe new BlockCoord(0, 1, 0)
   }
 
 }
