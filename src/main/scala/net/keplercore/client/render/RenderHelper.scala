@@ -31,7 +31,7 @@ object RenderHelper
 
 		val renderItem: RenderItem = new RenderItem()
 		{
-      def shouldBob(): Boolean =
+      override def shouldBob(): Boolean =
       {
         false
       }
