@@ -35,7 +35,7 @@ object RenderHelper
       {
         false
       }
-		};
+		}
 
 		renderItem.setRenderManager(RenderManager.instance)
 		renderItem.doRenderItem(entityItem, 0, 0.14, -0.14, 0, 0)
