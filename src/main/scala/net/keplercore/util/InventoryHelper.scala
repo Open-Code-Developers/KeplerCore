@@ -25,8 +25,10 @@ object InventoryHelper
 
 	def dropItems(world: World, inv: IInventory, i: Int, j: Int, k: Int)
   {
-		for (int slot = 0; slot < inv.getSizeInventory(); ++slot) {
-			ItemStack items = inv.getStackInSlot(slot)
+    val slot: Int = 0
+		while (slot < inv.getSizeInventory())
+    {
+			val items: ItemStack = inv.getStackInSlot(slot)
 
 			if (items != null && items.stackSize > 0) {
 				dropItems(world, inv.getStackInSlot(slot).copy(), i, j, k)
