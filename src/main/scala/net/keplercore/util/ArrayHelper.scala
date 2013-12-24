@@ -2,9 +2,9 @@ package net.keplercore.util
 
 class ArrayHelper
 {
-	def joinStringArray(oldArray: Array, oldArray2: String*): Array = {
-		String[] newArray = new String[oldArray.length + oldArray2.length]
-		int i
+	def joinStringArray(oldArray: Array[String], oldArray2: String*): Array[String] = {
+		val newArray: Array[String] = new String[oldArray.length + oldArray2.length]
+		val i: Int = _
 		for (i = 0; i < oldArray.length; ++i) {
 			newArray[i] = oldArray[i]
 		}
