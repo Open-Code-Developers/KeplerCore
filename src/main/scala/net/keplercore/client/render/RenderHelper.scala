@@ -13,33 +13,33 @@ import org.lwjgl.opengl.GL11;
  *
  */
 
-public class RenderHelper
+object RenderHelper
 {
-	public static void renderItemOnTop(ItemStack stack)
+	def renderItemOnTop(stack: ItemStack)
 	{
-		double d = 2;
-		double d1 = 1 / d;
-		GL11.glScaled(d, d, d);
+		val d: Double = 2
+		val d1: Double = 1 / d
+		GL11.glScaled(d, d, d)
 
-		GL11.glColor4f(1, 1, 1, 1);
+		GL11.glColor4f(1, 1, 1, 1)
 
-		GL11.glRotatef(90F, 1F, 0F, 0F);
+		GL11.glRotatef(90F, 1F, 0F, 0F)
 
-		EntityItem entityItem = new EntityItem(null);
-		entityItem.setEntityItemStack(stack);
-		entityItem.hoverStart = 0;
+		val entityItem: EntityItem = new EntityItem(null)
+		entityItem.setEntityItemStack(stack)
+		entityItem.hoverStart = 0
 
-		RenderItem renderItem = new RenderItem()
+		val renderItem: RenderItem = new RenderItem()
 		{
-			public boolean shouldBob()
-			{
-				return false;
-			}
+      def shouldBob(): Boolean =
+      {
+        false
+      }
 		};
 
-		renderItem.setRenderManager(RenderManager.instance);
-		renderItem.doRenderItem(entityItem, 0, 0.14, -0.14, 0, 0);
+		renderItem.setRenderManager(RenderManager.instance)
+		renderItem.doRenderItem(entityItem, 0, 0.14, -0.14, 0, 0)
 
-		GL11.glScaled(d1, d1, d1);
+		GL11.glScaled(d1, d1, d1)
 	}
 }
