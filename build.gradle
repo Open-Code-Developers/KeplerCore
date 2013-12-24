@@ -32,3 +32,4 @@ group = 'net.keplercore'
 version = 1
 
 cobertura.coverageFormats = ['html', 'xml']
+cobertura.coverageSourceDirs = sourceSets.main.scala.srcDirs
