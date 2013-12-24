@@ -41,12 +41,14 @@ public class SchematicBlock implements Comparable<SchematicBlock>
 
 	public boolean isAir()
 	{
+		//TODO use the actual isAirBlock() method once we find out a way to get the proper World instance
 		return blockID == 0;
 	}
 
 	public boolean isFluid()
 	{
-		return Block.blocksList[blockID] instanceof BlockFluid;
+		return Block.blocksList[blockID] instanceof BlockFluid
+			|| Block.blocksList[blockID] instanceof IFluidBlock;
 	}
 
 	public void readFromNBT(NBTTagCompound compound)
