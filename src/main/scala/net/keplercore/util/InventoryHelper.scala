@@ -5,9 +5,10 @@ import net.minecraft.inventory.IInventory
 import net.minecraft.item.ItemStack
 import net.minecraft.world.World
 
-public class InventoryHelper
+object InventoryHelper
 {
-	public static void dropItems(World world, ItemStack stack, int i, int j, int k) {
+	def dropItems(world: World, stack: ItemStack, i: Int, j: Int, k: Int)
+  {
 		if (stack.stackSize <= 0) {
 			return
 		}
@@ -22,7 +23,8 @@ public class InventoryHelper
 		world.spawnEntityInWorld(entityitem)
 	}
 
-	public static void dropItems(World world, IInventory inv, int i, int j, int k) {
+	def dropItems(world: World, inv: IInventory, i: Int, j: Int, k: Int)
+  {
 		for (int slot = 0; slot < inv.getSizeInventory(); ++slot) {
 			ItemStack items = inv.getStackInSlot(slot)
 
