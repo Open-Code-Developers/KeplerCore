@@ -48,8 +48,8 @@ class BlockCoordTest extends FlatSpec with Matchers {
   }
 
   it should "be returned in Hash form." in {
-    val coord = new BlockCoord(0, 0, 0)
-    coord.hashCode() shouldBe 8421504
+    val coord = new BlockCoord(ForgeDirection.getOrientation(1))
+    coord.hashCode() shouldBe 8421760
   }
 
   it should "be returned if cloned." in {
