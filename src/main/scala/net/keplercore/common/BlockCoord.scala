@@ -1,121 +1,86 @@
 package net.keplercore.common
 
+import net.minecraftforge.common.ForgeDirection
+import java.util
+import net.keplercore.common
 
-class BlockCoord
-{
-	x: Int
-	y: Int
-	z: Int
-	
-	def this(x: Int, y: Int, z: Int)
-	{
-		this.x = x
-		this.y = y
-		this.z = z
-	}
-	
-	def this(direction: ForgeDirection)
-	{
-		this(direction.offsetX, direction.offsetY, direction.offsetZ)
-	}
-	
-	def this(coords: Array[Int])
-	{
-		this(coords[0], coords[1], coords[2])
-	}
-	
-	@Override
-	public String toString()
-	{
-		return  "[" + x + " " + y + " " + z + "]"
-	}
-	
-	@Override
-	public boolean equals(Object object)
-	{
-		if (object == null || !(object instanceof BlockCoord))
-			return false
-		
-		BlockCoord coord = (BlockCoord) object
-		
-		return coord.x == x && coord.y == y && coord.z == z
-	}
-	
-	@Override
-	public int hashCode()
-	{
-		return (x + 128) << 16 | (y + 128) << 8 | (z + 128)
-	}
-	
-	@Override
-	public BlockCoord clone()
-	{
-		return new BlockCoord(x, y, z)
-	}
-	
-	public void offset(int x, int y, int z)
-	{
-		this.x += x
-		this.y += y
-		this.z += z
-	}
-	
-	public void offset(ForgeDirection direction, int distance)
-	{
-		offset(direction.offsetX * distance, direction.offsetY * distance, direction.offsetZ * distance)
-	}
-	
-	public void offset(ForgeDirection direction)
-	{
-		offset(direction, 1)
-	}
-	
-	public void offset(int[] offsets)
-	{
-		offset(offsets[0], offsets[1], offsets[2])
-	}
-	
-	public void offset(BlockCoord offset)
-	{
-		offset(offset.x, offset.y, offset.z)
-	}
-	
-	public BlockCoord getCoordWithOffset(int x, int y, int z)
-	{
-		return new BlockCoord(this.x + x, this.y + y, this.z + z)
-	}
-	
-	public BlockCoord getAdjacentCoord(ForgeDirection direction)
-	{
-		return this.getAdjacentCoord(direction, 1)
-	}
-	
-	public BlockCoord getAdjacentCoord(ForgeDirection direction, int distance)
-	{
-		return this.getCoordWithOffset(direction.offsetX * distance, direction.offsetY * distance, direction.offsetZ * distance)
-	}
-	
-	public BlockCoord[] getAdjacentCoords()
-	{
-		ArrayList<BlockCoord> adjacent = new ArrayList<BlockCoord>()
-		int i, j, k
-		
-		for (i = -1 i < 2 ++i)
-			for (j = -1 j < 2 ++j)
-				for (k = -1 k < 2 ++k)
-					if (i != j && j != k && i != k)
-						adjacent.add(getCoordWithOffset(i, j, k))
-		
-		return (BlockCoord[]) adjacent.toArray()
-	}
-	
-	public int[] getCoordsArray()
-	{
-		return new int[]
-		{
-			x,
-			y,
-			z
-		}
-	}
+object BlockCoord
+  {
+    class BlockCoord(direction: ForgeDirection)
+    {
+      new BlockCoord(direction.offsetX, direction.offsetY, direction.offsetZ)
+    }
+
+    class BlockCoord(coords: Array[Int])
+    {
+      new BlockCoord(coords(0), coords(1), coords(2))
+    }
+
+    class BlockCoord(x: Int, y: Int, z: Int)
+    {
+
+      override def toString(): String = "[" + x + " " + y + " " + z + "]"
+
+
+      override def equals(Object object): Boolean
+      {
+        if (object == null || !(object instanceof BlockCoord)) {
+          false
+        }
+
+        BlockCoord coord = (BlockCoord) object
+
+        return coord.x == x && coord.y == y && coord.z == z
+      }
+
+      override def hashCode(): Int = (x + 128) << 16 | (y + 128) << 8 | (z + 128)
+
+      override def clone(): BlockCoord = new BlockCoord(x, y, z)
+
+      def offset(x: Int, y: Int, z: Int)
+      {
+        this.x += x
+        this.y += y
+        this.z += z
+      }
+
+      def offset(direction: ForgeDirection, distance: Int) = offset(direction.offsetX * distance, direction.offsetY * distance, direction.offsetZ * distance)
+
+      def offset(direction: ForgeDirection) = offset(direction, 1)
+
+      def offset(offsets: Array[Int]) = offset(offsets[0], offsets[1], offsets[2])
+
+      def offset(offset: BlockCoord) =  offset(offset.x, offset.y, offset.z)
+
+      def getCoordWithOffset(x: Int, y: Int, x: Int): BlockCoord = new BlockCoord(this.x + x, this.y + y, this.z + z)
+
+      def getAdjacentCoord(direction: ForgeDirection): BlockCoord = this.getAdjacentCoord(direction, 1)
+
+      def getAdjacentCoord(direction: ForgeDirection, distance: Int): BlockCoord = this.getCoordWithOffset(direction.offsetX * distance, direction.offsetY * distance, direction.offsetZ * distance)
+
+      def getAdjacentCoords(): BlockCoord[] =
+      {
+        util.ArrayList<BlockCoord> adjacent = new util.ArrayList<BlockCoord>()
+        int i, j, k
+
+        for (i = -1 i < 2 ++i)
+        for (j = -1 j < 2 ++j)
+        for (k = -1 k < 2 ++k)
+        if (i != j && j != k && i != k)
+        adjacent.add(getCoordWithOffset(i, j, k))
+
+        return (common.BlockCoord[]) adjacent.toArray()
+      }
+
+      def int[] getCoordsArray()
+      {
+        return new int[]
+        {
+          x,
+          y,
+          z
+        }
+      }
+    }
+  }
 }
