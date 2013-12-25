@@ -12,8 +12,8 @@ class OreStackTest extends FlatSpec with Matchers
 {
 	"An Ore Stack in the form of 2 integers" should "be returned with reduced stackSize." in
 	{
-		val stack = new OreStack(64, 1)
-		stack.splitStack(32) shouldBe new OreStack(32, stack.oreID)
+		val stack = new OreStack(1, 64)
+		stack.splitStack(32) shouldBe new OreStack(stack.oreID, 32)
 	}
 
 	it should "return all the entries for the oreID." in
