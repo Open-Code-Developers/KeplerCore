@@ -17,7 +17,7 @@ case class BlockCoord(var x: Int, var y: Int, var z: Int)
 
   override def toString: String = "[" + x + " " + y + " " + z + "]"
 
-  override def equals(obj: Object): Boolean =
+  override def equals(obj: Any): Boolean =
   {
     if (obj == null || !obj.isInstanceOf[BlockCoord])
     {
