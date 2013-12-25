@@ -31,6 +31,6 @@ class OreStackTest extends FlatSpec with Matchers
 		compound.setShort("id", stack.oreID.asInstanceOf[Short])
 		compound.setByte("Count", stack.stackSize.asInstanceOf[Byte])
 
-		stack.writeToNBT(NBTTagCompound()) shouldBe compound
+		stack.writeToNBT(NBTTagCompound()).equals(compound) shouldBe true
 	}
 }
