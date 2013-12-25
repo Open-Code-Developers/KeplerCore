@@ -26,7 +26,7 @@ class OreStackTest extends FlatSpec with Matchers
 	it should "return an NBT compound tag with the stackSize and oreID." in
 	{
 		val stack = OreStack(64, 1)
-		var compound: NBTTagCompound = NBTTagCompound()
+		var compound = NBTTagCompound
 
 		compound.setShort("id", stack.oreID.asInstanceOf[Short])
 		compound.setByte("Count", stack.stackSize.asInstanceOf[Byte])
