@@ -24,7 +24,7 @@ class BlockCoordTest extends FlatSpec with Matchers {
     coord.clone() shouldBe new BlockCoord(0, 0, 0)
   }
 
-  "A Block Coordinate in the form of an array of integers" should "returned in String form." in {
+  "A Block Coordinate in the form of an array of integers" should "be returned in String form." in {
     val coordArray = Array(0, 0, 0)
     val coord = new BlockCoord(coordArray)
     coord.toString shouldBe "[0 0 0]"
