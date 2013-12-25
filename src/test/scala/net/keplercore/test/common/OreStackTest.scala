@@ -8,11 +8,12 @@ import net.minecraftforge.oredict.OreDictionary
 import net.minecraft.nbt.NBTTagCompound
 
 @RunWith(classOf[JUnitRunner])
-class OreStackTest extends FlatSpec with Matchers {
+class OreStackTest extends FlatSpec with Matchers
+{
 	"An Ore Stack in the form of 2 integers" should "be returned with reduced stackSize." in
 	{
 		val stack = new OreStack(64, 1)
-		stack.splitStack(32) shouldBe new OreStack(32, 0)
+		stack.splitStack(32) shouldBe new OreStack(32, stack.oreID)
 	}
 
 	it should "return all the entries for the oreID." in
