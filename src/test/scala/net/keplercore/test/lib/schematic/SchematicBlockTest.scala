@@ -21,26 +21,26 @@ class SchematicBlockTest extends FlatSpec with Matchers
 		schematic.isAir shouldBe false
 	}
 
-	"Fluid Block" should "return true if a block is a fluid block" in
+	"Fluid Block" should "return true if a block is a fluid block." in
 	{
 		val schematic: SchematicBlock = SchematicBlock(0, 0, 0, Block.waterMoving.blockID, 0)
 		schematic.isAir shouldBe true
 	}
 
-	it should "return false if a block is not a fluid block" in
+	it should "return false if a block is not a fluid block." in
 	{
 		val schematic: SchematicBlock = SchematicBlock(0, 0, 0, 1, 0)
 		schematic.isAir shouldBe false
 	}
 
-	"Same Blocks" should "return true if they are equal" in
+	"Same Blocks" should "return true if they are equal." in
 	{
 		val schematic1: SchematicBlock = SchematicBlock(0, 0, 0, 1, 0)
 		val schematic2: SchematicBlock = SchematicBlock(0, 0, 0, 1, 0)
 		schematic1.equals(schematic2) shouldBe true
 	}
 
-	it should "return false if they are different" in
+	it should "return false if they are different." in
 	{
 		val schematic1: SchematicBlock = SchematicBlock(0, 0, 0, 1, 0)
 		val schematic2: SchematicBlock = SchematicBlock(0, 0, 0, 2, 0)
