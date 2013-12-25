@@ -1,9 +1,9 @@
 package net.keplercore.common
 
 import net.minecraftforge.common.ForgeDirection
-import java.util
+import java.util.ArrayList
 
-class BlockCoord(x: Int, y: Int, z: Int)
+case class BlockCoord(var x: Int, var y: Int, var z: Int)
 {
   def this(direction: ForgeDirection)
   {
@@ -19,12 +19,12 @@ class BlockCoord(x: Int, y: Int, z: Int)
 
   override def equals(obj: Object): Boolean =
   {
-    if (obj == null || !(obj instanceof BlockCoord))
+    if (obj == null || !obj.isInstanceOf[BlockCoord])
     {
       false
     }
 
-    coord: BlockCoord => obj
+    val coord: BlockCoord = obj.asInstanceOf[BlockCoord]
 
     coord.x == x && coord.y == y && coord.z == z
   }
@@ -40,13 +40,13 @@ class BlockCoord(x: Int, y: Int, z: Int)
     this.z += z
   }
 
-  def offset(direction: ForgeDirection, distance: Int) = offset(direction.offsetX * distance, direction.offsetY * distance, direction.offsetZ * distance)
+  def offset(direction: ForgeDirection, distance: Int): Unit = offset(direction.offsetX * distance, direction.offsetY * distance, direction.offsetZ * distance)
 
-  def offset(direction: ForgeDirection) = offset(direction, 1)
+  def offset(direction: ForgeDirection): Unit = offset(direction, 1)
 
-  def offset(offsets: Array[Int]) = offset(offsets(0), offsets(1), offsets(2))
+  def offset(offsets: Array[Int]): Unit = offset(offsets(0), offsets(1), offsets(2))
 
-  def offset(offset: BlockCoord) = offset(offset.x, offset.y, offset.z)
+  def offset(theOffset: BlockCoord): Unit = offset(theOffset.x, theOffset.y, theOffset.z)
 
   def getCoordWithOffset(offsetX: Int, offsetY: Int, offsetZ: Int): BlockCoord = new BlockCoord(this.x + offsetX, this.y + offsetY, this.z + offsetZ)
 
@@ -54,9 +54,9 @@ class BlockCoord(x: Int, y: Int, z: Int)
 
   def getAdjacentCoord(direction: ForgeDirection, distance: Int): BlockCoord = this.getCoordWithOffset(direction.offsetX * distance, direction.offsetY * distance, direction.offsetZ * distance)
 
-  def getAdjacentCoords: Array[BlockCoord] =
+  def getAdjacentCoords: ArrayList[BlockCoord] =
   {
-    util.ArrayList<BlockCoord> adjacent = new util.ArrayList<BlockCoord>()
+    var adjacent: ArrayList[BlockCoord] = new ArrayList[BlockCoord]()
 
     for (i <- -1 until 2)
       for (j <- -1 until 2)
