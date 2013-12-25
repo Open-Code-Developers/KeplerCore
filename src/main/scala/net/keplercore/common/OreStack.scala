@@ -74,7 +74,7 @@ case class OreStack(var stackSize: Int, var oreID: Int) {
 	private def isOreStackEqual(oreStack: OreStack): Boolean =
 		{
 			if (stackSize != oreStack.stackSize || oreID != oreStack.oreID)
-				false;
+				false
 			else true
 		}
 
@@ -109,7 +109,7 @@ object OreStack {
 	def copyOreStack(oreStack: OreStack): OreStack =
 		{
 			if (oreStack == null)
-				null;
+				null
 			else oreStack.copy
 		}
 }
