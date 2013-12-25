@@ -15,7 +15,7 @@ class BlockCoord(x: Int, y: Int, z: Int)
     this(coords(0), coords(1), coords(2))
   }
 
-  override def toString(): String = "[" + x + " " + y + " " + z + "]"
+  override def toString: String = "[" + x + " " + y + " " + z + "]"
 
   override def equals(obj: Object): Boolean =
   {
@@ -24,9 +24,9 @@ class BlockCoord(x: Int, y: Int, z: Int)
       false
     }
 
-    BlockCoord coord = (BlockCoord) obj
+    coord: BlockCoord => obj
 
-    return coord.x == x && coord.y == y && coord.z == z
+    coord.x == x && coord.y == y && coord.z == z
   }
 
   override def hashCode(): Int = (x + 128) << 16 | (y + 128) << 8 | (z + 128)
@@ -54,7 +54,7 @@ class BlockCoord(x: Int, y: Int, z: Int)
 
   def getAdjacentCoord(direction: ForgeDirection, distance: Int): BlockCoord = this.getCoordWithOffset(direction.offsetX * distance, direction.offsetY * distance, direction.offsetZ * distance)
 
-  def getAdjacentCoords(): Array[BlockCoord] =
+  def getAdjacentCoords: Array[BlockCoord] =
   {
     util.ArrayList<BlockCoord> adjacent = new util.ArrayList<BlockCoord>()
 
@@ -64,10 +64,10 @@ class BlockCoord(x: Int, y: Int, z: Int)
           if (i != j && j != k && i != k)
             adjacent.add(getCoordWithOffset(i, j, k))
 
-    return (Array[BlockCoord]) adjacent
+    adjacent
   }
 
-  def getCoordsArray(): Array[Int] =
+  def getCoordsArray: Array[Int] =
   {
     Array(this.x, this.y, this.z)
   }
