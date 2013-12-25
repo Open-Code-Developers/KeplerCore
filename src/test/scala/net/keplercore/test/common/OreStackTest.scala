@@ -11,19 +11,19 @@ import net.minecraft.nbt.NBTTagCompound
 class OreStackTest extends FlatSpec with Matchers {
 	"An Ore Stack in the form of 2 integers" should "be returned with reduced stackSize." in
 	{
-		val stack = new OreStack(64, 0)
-		stack.splitStack(32).stackSize shouldBe 32
+		val stack = new OreStack(64, 1)
+		stack.splitStack(32) shouldBe new OreStack(32, 0)
 	}
 
 	it should "return all the entries for the oreID." in
 	{
-		val stack = new OreStack(64, 0)
-		stack.getItem() shouldBe OreDictionary.getOres(0)
+		val stack = new OreStack(64, 1)
+		stack.getItem() shouldBe OreDictionary.getOres(stack.oreID)
 	}
 
 	it should "return an NBT compound tag with the stackSize and oreID." in
 	{
-		val stack = new OreStack(64, 0)
+		val stack = new OreStack(64, 1)
 		val compound = new NBTTagCompound()
 
 		compound.setShort("id", stack.oreID.asInstanceOf[Short])

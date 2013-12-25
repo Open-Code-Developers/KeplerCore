@@ -30,7 +30,7 @@ class SchematicBlockTest extends FlatSpec with Matchers
 		}
 		catch
 		{
-			case e: Exception => e.printStackTrace();
+			case e: Exception => e.printStackTrace()
 		}
 	}
 
@@ -43,7 +43,7 @@ class SchematicBlockTest extends FlatSpec with Matchers
 		}
 		catch
 		{
-			case e: Exception => e.printStackTrace();
+			case e: Exception => e.printStackTrace()
 		}
 	}
 
