@@ -15,6 +15,11 @@ public class BlockCoord
 		this.z = z;
 	}
 	
+	public BlockCoord()
+	{
+		this(0, 0, 0);
+	}
+	
 	public BlockCoord(ForgeDirection direction)
 	{
 		this(direction.offsetX, direction.offsetY, direction.offsetZ);
