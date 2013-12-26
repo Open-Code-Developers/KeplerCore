@@ -85,10 +85,10 @@ case class OreStack(var oreID: Int, var stackSize: Int) {
 
 object OreStack
 {
-	def loadOreStackFromNBT(_NBTTagCompound: NBTTagCompound): OreStack =
+	def loadOreStackFromNBT(compound: NBTTagCompound): OreStack =
 	{
 		var oreStack: OreStack = new OreStack
-		oreStack.readFromNBT(_NBTTagCompound)
+		oreStack.readFromNBT(compound)
 		oreStack
 	}
 
