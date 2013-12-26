@@ -8,8 +8,6 @@ import net.minecraft.item.ItemStack
 import net.minecraft.nbt.NBTTagCompound
 import net.minecraftforge.oredict.OreDictionary
 
-import org.scalatest.enablers.Size
-
 case class OreStack(var oreID: Int, var stackSize: Int) {
 	def this(stack: ItemStack, size: Int) = this(OreDictionary.getOreID(stack), size)
 
@@ -33,12 +31,12 @@ case class OreStack(var oreID: Int, var stackSize: Int) {
 	 * Remove the argument from the stack size. Return a new stack object with argument size.
 	 */
 	def splitStack(par1: Int): OreStack =
-		{
-			val oreStack: OreStack = OreStack(oreID, par1)
+	{
+		val oreStack: OreStack = OreStack(oreID, par1)
 
-			stackSize -= par1
-			oreStack
-		}
+		stackSize -= par1
+		oreStack
+	}
 
 	/**
 	 * Returns the object corresponding to the stack.
@@ -49,21 +47,21 @@ case class OreStack(var oreID: Int, var stackSize: Int) {
 	 * Write the stack fields to a NBT object. Return the new NBT object.
 	 */
 	def writeToNBT(compound: NBTTagCompound): NBTTagCompound =
-		{
-			compound.setShort("id", oreID.asInstanceOf[Short])
-			compound.setByte("Count", stackSize.asInstanceOf[Byte])
+	{
+		compound.setShort("id", oreID.asInstanceOf[Short])
+		compound.setByte("Count", stackSize.asInstanceOf[Byte])
 
-			compound
-		}
+		compound
+	}
 
 	/**
 	 * Read the stack fields from a NBT object.
 	 */
 	def readFromNBT(compound: NBTTagCompound): Unit =
-		{
-			oreID = compound.getShort("id")
-			stackSize = compound.getByte("Count")
-		}
+	{
+		oreID = compound.getShort("id")
+		stackSize = compound.getByte("Count")
+	}
 
 	/**
 	 * Returns a new stack with the same properties.
@@ -74,50 +72,46 @@ case class OreStack(var oreID: Int, var stackSize: Int) {
 	 * compares OreStack argument to the instance OreStack returns true if both OreStacks are equal
 	 */
 	private def isOreStackEqual(oreStack: OreStack): Boolean =
-		{
-			if (stackSize != oreStack.stackSize || oreID != oreStack.oreID)
-				false
-			else true
-		}
+	{
+		if (stackSize != oreStack.stackSize || oreID != oreStack.oreID)
+			false
+		else true
+	}
 
 	def isItemEqual(oreStack: OreStack): Boolean = oreID == oreStack.oreID
 
 	override def toString(): String = stackSize + "x" + OreDictionary.getOreName(oreID)
 }
 
-object OreStack {
+object OreStack
+{
 	def loadOreStackFromNBT(_NBTTagCompound: NBTTagCompound): OreStack =
-		{
-			var oreStack: OreStack = new OreStack
-			oreStack.readFromNBT(_NBTTagCompound)
-			oreStack
-		}
+	{
+		var oreStack: OreStack = new OreStack
+		oreStack.readFromNBT(_NBTTagCompound)
+		oreStack
+	}
 
 	/**
 	 * compares OreStack argument1 with OreStack argument2 returns true if both OreStacks are equal
 	 */
 	def areOreStacksEqual(oreStack1: OreStack, oreStack2: OreStack): Boolean =
-		{
-			if (oreStack1 == null && oreStack2 == null)
-				true
-			else if (oreStack1 == null || oreStack2 == null)
-				false
-			else oreStack1.isOreStackEqual(oreStack2)
-		}
+	{
+		if (oreStack1 == null && oreStack2 == null)
+			true
+		else if (oreStack1 == null || oreStack2 == null)
+			false
+		else oreStack1.isOreStackEqual(oreStack2)
+	}
 
 	/**
 	 * Creates a copy of a OreStack, a null parameters will return a null.
 	 */
 	def copyOreStack(oreStack: OreStack): OreStack =
-		{
-			if (oreStack == null)
-				null
-			else oreStack.copy
-		}
-	
-	implicit val oreStackSize = new Size[OreStack]
 	{
-		def sizeOf(stack: OreStack): Long = stack.stackSize
+		if (oreStack == null)
+			null
+		else oreStack.copy
 	}
 }
 

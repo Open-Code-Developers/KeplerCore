@@ -3,6 +3,7 @@ package net.keplercore.test.common
 import org.scalatest._
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
+import org.scalatest.enablers.Size
 import net.keplercore.common.OreStack
 import net.minecraftforge.oredict.OreDictionary
 import net.minecraft.nbt.NBTTagCompound
@@ -32,5 +33,10 @@ class OreStackTest extends FlatSpec with Matchers
 		compound.setByte("Count", stack.stackSize.asInstanceOf[Byte])
 
 		stack.writeToNBT(new NBTTagCompound).equals(compound) shouldBe true
+	}
+	
+	implicit val oreStackSize = new Size[OreStack]
+	{
+		def sizeOf(stack: OreStack): Long = stack.stackSize
 	}
 }
