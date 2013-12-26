@@ -18,11 +18,13 @@ class OreStackTest extends FlatSpec with Matchers
 		stack.splitStack(32) should have size 32
 	}
 
+	/* Crashes because of faulty classloading, to be revisited
 	it should "return all the entries for the oreID." in
 	{
 		val stack = OreStack(1, 64)
-		stack.getItem().equals(OreDictionary.getOres(stack.oreID)) shouldBe true
+		stack.getItem() should === (OreDictionary.getOres(stack.oreID))
 	}
+	*/
 
 	it should "return an NBT compound tag with the stackSize and oreID." in
 	{
@@ -32,7 +34,7 @@ class OreStackTest extends FlatSpec with Matchers
 		compound.setShort("id", stack.oreID.asInstanceOf[Short])
 		compound.setByte("Count", stack.stackSize.asInstanceOf[Byte])
 
-		stack.writeToNBT(new NBTTagCompound).equals(compound) shouldBe true
+		stack.writeToNBT(new NBTTagCompound) should === (compound)
 	}
 	
 	implicit val oreStackSize = new Size[OreStack]
