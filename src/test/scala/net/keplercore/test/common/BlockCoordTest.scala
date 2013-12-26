@@ -18,60 +18,60 @@ class BlockCoordTest extends FlatSpec with Matchers {
 
 	it should "be returned in Hash form." in {
 		val coord = new BlockCoord
-		coord.hashCode() shouldBe 8421504
+		coord.hashCode shouldBe 8421504
 	}
 
 	it should "be returned if cloned." in
 	{
 		val coord = new BlockCoord
-		coord.clone() shouldBe new BlockCoord
+		coord.clone shouldBe new BlockCoord
 	}
 	
 	it should "not equal null" in
 	{
 		val coord = new BlockCoord
-		coord.equals(null) shouldBe false
+		coord equals null shouldBe false
 	}
 	
 	it should "offset properly" in
 	{
 		val coord = new BlockCoord
-		coord.offset(1, 2, 3);
+		coord offset(1, 2, 3);
 		coord shouldEqual BlockCoord(1, 2, 3)
 	}
 	
 	it should "offset with an Array properly" in
 	{
 		val coord = new BlockCoord
-		coord.offset(Array[Int](1, 2, 3));
+		coord offset Array[Int](1, 2, 3);
 		coord shouldEqual BlockCoord(1, 2, 3)
 	}
 	
 	it should "offset with a ForgeDirection properly" in
 	{
 		val coord = new BlockCoord
-		coord.offset(ForgeDirection.NORTH);
+		coord offset ForgeDirection.NORTH;
 		coord shouldEqual BlockCoord(0, 0, -1)
 	}
 	
 	it should "offset with ForgeDirection and a distance properly" in
 	{
 		val coord = new BlockCoord
-		coord.offset(ForgeDirection.NORTH, 2);
+		coord offset (ForgeDirection.NORTH, 2);
 		coord shouldEqual BlockCoord(0, 0, -2)
 	}
 	
 	it should "offset with a BlockCoord properly" in
 	{
 		val coord = new BlockCoord
-		coord.offset(BlockCoord(1, 2, 3));
+		coord offset BlockCoord(1, 2, 3);
 		coord shouldEqual BlockCoord(1, 2, 3)
 	}
 	
 	it should "get the adjacent coord properly" in
 	{
 		val coord = new BlockCoord
-		coord.getAdjacentCoord(ForgeDirection.NORTH) shouldEqual BlockCoord(0, 0, -1)
+		coord getAdjacentCoord ForgeDirection.NORTH shouldEqual BlockCoord(0, 0, -1)
 	}
 	
 	it should "get the coordinate array properly" in

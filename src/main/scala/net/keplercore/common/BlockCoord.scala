@@ -17,9 +17,7 @@ case class BlockCoord(var x: Int, var y: Int, var z: Int)
 	override def equals(obj: Any): Boolean =
 	{
 		if (obj == null || !obj.isInstanceOf[BlockCoord])
-		{
 			return false
-		}
 
 		val coord: BlockCoord = obj.asInstanceOf[BlockCoord]
 
@@ -28,7 +26,7 @@ case class BlockCoord(var x: Int, var y: Int, var z: Int)
 
 	override def hashCode(): Int = (x + 128) << 16 | (y + 128) << 8 | (z + 128)
 
-	override def clone(): BlockCoord = new BlockCoord(x, y, z)
+	override def clone(): BlockCoord = BlockCoord(x, y, z)
 
 	def offset(x: Int, y: Int, z: Int)
 	{
@@ -45,11 +43,11 @@ case class BlockCoord(var x: Int, var y: Int, var z: Int)
 
 	def offset(theOffset: BlockCoord): Unit = offset(theOffset.x, theOffset.y, theOffset.z)
 
-	def getCoordWithOffset(offsetX: Int, offsetY: Int, offsetZ: Int): BlockCoord = new BlockCoord(this.x + offsetX, this.y + offsetY, this.z + offsetZ)
+	def getCoordWithOffset(offsetX: Int, offsetY: Int, offsetZ: Int): BlockCoord = BlockCoord(this.x + offsetX, this.y + offsetY, this.z + offsetZ)
 
-	def getAdjacentCoord(direction: ForgeDirection): BlockCoord = this.getAdjacentCoord(direction, 1)
+	def getAdjacentCoord(direction: ForgeDirection): BlockCoord = getAdjacentCoord(direction, 1)
 
-	def getAdjacentCoord(direction: ForgeDirection, distance: Int): BlockCoord = this.getCoordWithOffset(direction.offsetX * distance, direction.offsetY * distance, direction.offsetZ * distance)
+	def getAdjacentCoord(direction: ForgeDirection, distance: Int): BlockCoord = getCoordWithOffset(direction.offsetX * distance, direction.offsetY * distance, direction.offsetZ * distance)
 
 	def getAdjacentCoords: ArrayList[BlockCoord] =
 	{
@@ -59,13 +57,10 @@ case class BlockCoord(var x: Int, var y: Int, var z: Int)
 			for (j <- -1 until 2)
 				for (k <- -1 until 2)
 					if (i != j && j != k && i != k)
-						adjacent.add(getCoordWithOffset(i, j, k))
+						adjacent add(getCoordWithOffset(i, j, k))
 
 		adjacent
 	}
 
-	def getCoordsArray: Array[Int] =
-	{
-		Array(this.x, this.y, this.z)
-	}
+	def getCoordsArray: Array[Int] = Array(x, y, z)
 }

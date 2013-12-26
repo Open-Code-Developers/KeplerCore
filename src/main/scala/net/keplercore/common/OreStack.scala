@@ -57,7 +57,7 @@ case class OreStack(var oreID: Int, var stackSize: Int) {
 	/**
 	 * Read the stack fields from a NBT object.
 	 */
-	def readFromNBT(compound: NBTTagCompound): Unit =
+	def readFromNBT(compound: NBTTagCompound)
 	{
 		oreID = compound.getShort("id")
 		stackSize = compound.getByte("Count")
