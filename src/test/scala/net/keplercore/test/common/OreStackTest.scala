@@ -15,7 +15,7 @@ class OreStackTest extends FlatSpec with Matchers
 	"An Ore Stack class instance" should "be returned with reduced stackSize." in
 	{
 		val stack = OreStack(1, 64)
-		stack.splitStack(32) should have size 32
+		stack.splitStack(32) should have ('stackSize (32))
 	}
 
 	/* Crashes because of faulty classloading, to be revisited
@@ -110,10 +110,5 @@ class OreStackTest extends FlatSpec with Matchers
 	{
 		val stack = OreStack(1, 64)
 		OreStack.areOreStacksEqual(stack, OreStack.copyOreStack(stack)) shouldBe true
-	}
-	
-	implicit val oreStackSize = new Size[OreStack]
-	{
-		def sizeOf(stack: OreStack): Long = stack.stackSize
 	}
 }

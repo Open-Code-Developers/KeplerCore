@@ -6,7 +6,8 @@ import net.minecraft.nbt.NBTTagCompound
 import net.minecraft.world.World
 import net.minecraftforge.fluids.IFluidBlock
 
-case class SchematicBlock(var i: Int, var j: Int, var k: Int, var blockID: Int, var blockMeta: Int) {
+case class SchematicBlock(var i: Int, var j: Int, var k: Int, var blockID: Int, var blockMeta: Int) extends Comparable[SchematicBlock]
+{
 	def this() = this(0, 0, 0, 0, 0)
 	
 	def this(compound: NBTTagCompound) =
@@ -48,15 +49,14 @@ case class SchematicBlock(var i: Int, var j: Int, var k: Int, var blockID: Int, 
 		compound.setInteger("meta", blockMeta)
 	}
 
-	/*TODO find a way to make this a proper realtional operator used by stuff
-	def <(other: SchematicBlock): Boolean =
+	override def compareTo(other: SchematicBlock): Int =
 	{
 		if (isFluid() && !other.isFluid())
-			false
+			1
 		else if (!isFluid() && other.isFluid())
-			true
-		else j < other.j
-	}*/
+			-1
+		else j - other.j
+	}
 
 	override def equals(o: Any): Boolean =
 	{
