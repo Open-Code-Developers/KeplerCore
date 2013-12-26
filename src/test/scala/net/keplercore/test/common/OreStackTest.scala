@@ -106,6 +106,12 @@ class OreStackTest extends FlatSpec with Matchers
 		OreStack.areOreStacksEqual(null, null) shouldBe true
 	}
 	
+	it should "statically copy the OreStack instance properly" in
+	{
+		val stack = OreStack(1, 64)
+		OreStack.areOreStacksEqual(stack, OreStack.copyOreStack(stack)) shouldBe true
+	}
+	
 	implicit val oreStackSize = new Size[OreStack]
 	{
 		def sizeOf(stack: OreStack): Long = stack.stackSize
