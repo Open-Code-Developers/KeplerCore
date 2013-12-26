@@ -42,14 +42,14 @@ class SchematicBlockTest extends FlatSpec with Matchers
 		schematic1 equals schematic2 shouldBe true
 	}
 
-	it should "return false if they are different." in
+	they should "return false if they are different." in
 	{
 		val schematic1: SchematicBlock = SchematicBlock(0, 0, 0, 1, 0)
 		val schematic2: SchematicBlock = SchematicBlock(0, 0, 0, 2, 0)
 		schematic1 equals schematic2 shouldBe false
 	}
 
-	it should "return false if the other one is null." in
+	they should "return false if the other one is null." in
 	{
 		val schematic: SchematicBlock = SchematicBlock(0, 0, 0, 1, 0)
 		schematic equals null shouldBe false
