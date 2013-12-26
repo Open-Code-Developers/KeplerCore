@@ -8,7 +8,9 @@ import net.minecraft.item.ItemStack
 import net.minecraft.nbt.NBTTagCompound
 import net.minecraftforge.oredict.OreDictionary
 
-case class OreStack(var stackSize: Int, var oreID: Int) {
+import org.scalatest.enablers.Size
+
+case class OreStack(var oreID: Int, var stackSize: Int) {
 	def this(stack: ItemStack, size: Int) = this(OreDictionary.getOreID(stack), size)
 
 	def this(stack: ItemStack) = this(stack, 1)
@@ -19,7 +21,7 @@ case class OreStack(var stackSize: Int, var oreID: Int) {
 
 	def this(item: Item, size: Int) = this(new ItemStack(item), size)
 
-	def this(item: Item) = this(item.itemID, 1)
+	def this(item: Item) = this(item, 1)
 
 	def this(name: String, size: Int) = this(OreDictionary.getOreID(name), size)
 
@@ -46,21 +48,21 @@ case class OreStack(var stackSize: Int, var oreID: Int) {
 	/**
 	 * Write the stack fields to a NBT object. Return the new NBT object.
 	 */
-	def writeToNBT(par1NBTTagCompound: NBTTagCompound): NBTTagCompound =
+	def writeToNBT(compound: NBTTagCompound): NBTTagCompound =
 		{
-			par1NBTTagCompound.setShort("id", oreID.asInstanceOf[Short])
-			par1NBTTagCompound.setByte("Count", stackSize.asInstanceOf[Byte])
+			compound.setShort("id", oreID.asInstanceOf[Short])
+			compound.setByte("Count", stackSize.asInstanceOf[Byte])
 
-			par1NBTTagCompound
+			compound
 		}
 
 	/**
 	 * Read the stack fields from a NBT object.
 	 */
-	def readFromNBT(par1NBTTagCompound: NBTTagCompound): Unit =
+	def readFromNBT(compound: NBTTagCompound): Unit =
 		{
-			oreID = par1NBTTagCompound.getShort("id")
-			stackSize = par1NBTTagCompound.getByte("Count")
+			oreID = compound.getShort("id")
+			stackSize = compound.getByte("Count")
 		}
 
 	/**
@@ -86,7 +88,7 @@ case class OreStack(var stackSize: Int, var oreID: Int) {
 object OreStack {
 	def loadOreStackFromNBT(_NBTTagCompound: NBTTagCompound): OreStack =
 		{
-			var oreStack: OreStack = new OreStack()
+			var oreStack: OreStack = new OreStack
 			oreStack.readFromNBT(_NBTTagCompound)
 			oreStack
 		}
@@ -112,4 +114,10 @@ object OreStack {
 				null
 			else oreStack.copy
 		}
+	
+	implicit val oreStackSize = new Size[OreStack]
+	{
+		def sizeOf(stack: OreStack): Long = stack.stackSize
+	}
 }
+

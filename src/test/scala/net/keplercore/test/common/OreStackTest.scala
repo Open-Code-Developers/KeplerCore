@@ -13,13 +13,13 @@ class OreStackTest extends FlatSpec with Matchers
 {
 	"An Ore Stack in the form of 2 integers" should "be returned with reduced stackSize." in
 	{
-		val stack = OreStack(64, 1)
-		stack.splitStack(32).equals(OreStack(32, stack.oreID)) shouldBe true
+		val stack = OreStack(1, 64)
+		stack.splitStack(32) should have size 32
 	}
 
 	it should "return all the entries for the oreID." in
 	{
-		val stack = OreStack(64, 1)
+		val stack = OreStack(1, 64)
 		stack.getItem().equals(OreDictionary.getOres(stack.oreID)) shouldBe true
 	}
 
@@ -31,6 +31,6 @@ class OreStackTest extends FlatSpec with Matchers
 		compound.setShort("id", stack.oreID.asInstanceOf[Short])
 		compound.setByte("Count", stack.stackSize.asInstanceOf[Byte])
 
-		stack.writeToNBT(new NBTTagCompound()).equals(compound) shouldBe true
+		stack.writeToNBT(new NBTTagCompound).equals(compound) shouldBe true
 	}
 }
