@@ -19,14 +19,14 @@ case class BlockCoord(var x: Int, var y: Int, var z: Int)
 		if (obj == null || !obj.isInstanceOf[BlockCoord])
 			return false
 
-		val coord: BlockCoord = obj.asInstanceOf[BlockCoord]
+		val coord = obj.asInstanceOf[BlockCoord]
 
 		coord.x == x && coord.y == y && coord.z == z
 	}
 
-	override def hashCode(): Int = (x + 128) << 16 | (y + 128) << 8 | (z + 128)
+	override def hashCode: Int = (x + 128) << 16 | (y + 128) << 8 | (z + 128)
 
-	override def clone(): BlockCoord = BlockCoord(x, y, z)
+	override def clone: BlockCoord = BlockCoord(x, y, z)
 
 	def offset(x: Int, y: Int, z: Int)
 	{
@@ -51,7 +51,7 @@ case class BlockCoord(var x: Int, var y: Int, var z: Int)
 
 	def getAdjacentCoords: ArrayList[BlockCoord] =
 	{
-		var adjacent: ArrayList[BlockCoord] = new ArrayList[BlockCoord]()
+		var adjacent = new ArrayList[BlockCoord]
 
 		for (i <- -1 until 2)
 			for (j <- -1 until 2)

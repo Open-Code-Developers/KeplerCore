@@ -12,7 +12,7 @@ import net.minecraft.nbt.NBTTagCompound
 class SchematicReader
 {
 	private var ignoreAir: Boolean = false
-	private var changes: Map[Integer, Integer] = new HashMap[Integer, Integer]()
+	private var changes: Map[Integer, Integer] = new HashMap[Integer, Integer]
 	private var schematicTag: NBTTagCompound = null
 	var width: Short = 0
 	var length: Short = 0
@@ -27,42 +27,42 @@ class SchematicReader
 
 	def ReadSchematic(): ArrayList[SchematicBlock] =
 	{
-		width = schematicTag.getShort("Width")
-		length = schematicTag.getShort("Length")
-		height = schematicTag.getShort("Height")
+		width = schematicTag getShort "Width"
+		length = schematicTag getShort "Length"
+		height = schematicTag getShort "Height"
 
-		val blocks: Array[Byte] = schematicTag.getByteArray("Blocks")
-		val blockData: Array[Byte] = schematicTag.getByteArray("Data")
+		val blocks = schematicTag getByteArray "Blocks"
+		val blockData = schematicTag getByteArray "Data"
 
-		var blockList: ArrayList[SchematicBlock] = new ArrayList[SchematicBlock]()
+		var blockList = new ArrayList[SchematicBlock]
 		for (x <- 0 to width)
 		{
 			for (y <- 0 to height)
 			{
 				for (z <- 0 to length)
 				{
-					val index: Int = y * width * length + z * width + x
+					val index = y * width * length + z * width + x
 
 					var bb: SchematicBlock = null
-					if (changes.containsKey(blocks(index) & 0xFF))
+					if (changes containsKey blocks(index) & 0xFF)
 					{
-						bb = new SchematicBlock(x, y, z, changes.get(blocks(index) & 0xFF), blockData(index) & 0xFF)
+						bb = SchematicBlock(x, y, z, changes.get(blocks(index) & 0xFF), blockData(index) & 0xFF)
 					}
 					else
 					{
-						bb = new SchematicBlock(x, y, z, blocks(index) & 0xFF, blockData(index) & 0xFF)
+						bb = SchematicBlock(x, y, z, blocks(index) & 0xFF, blockData(index) & 0xFF)
 					}
 
-					if (!bb.isAir() || !ignoreAir)
+					if (!bb.isAir || !ignoreAir)
 					{
-						blockList.add(bb)
+						blockList add bb
 					}
 				}
 			}
 		}
 
-		return blockList
+		blockList
 	}
 
-	def replaceID(i: Int, j: Int): Unit = changes.put(i, j)
+	def replaceID(i: Int, j: Int) = changes put(i, j)
 }
