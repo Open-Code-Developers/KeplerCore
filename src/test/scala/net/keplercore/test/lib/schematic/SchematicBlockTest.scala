@@ -89,9 +89,9 @@ class SchematicBlockTest extends FlatSpec with Matchers
 			SchematicBlock(1, 2, 3, 4, 5) should be > 0
 	}
 	
-	it should "compare positive to something greater" in
+	it should "compare positive to something lesser" in
 	{
 		SchematicBlock(0, 0, 0, 0, 0) compareTo
-			SchematicBlock(1, 2, 3, 4, 5) should be > 0
+			SchematicBlock(1, 2, 3, 4, 5) should be < 0
 	}
 }
