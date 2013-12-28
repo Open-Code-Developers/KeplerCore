@@ -83,7 +83,6 @@ class SchematicBlockTest extends FlatSpec with Matchers
 		val block = SchematicBlock(0, 0, 0, 0, 0)
 		block compareTo block shouldBe 0
 	}
-	*/
 	
 	it should "compare positive to something greater" in
 	{
@@ -96,4 +95,5 @@ class SchematicBlockTest extends FlatSpec with Matchers
 		SchematicBlock(0, 0, 0, 0, 0) compareTo
 			SchematicBlock(1, 2, 3, 4, 5) should be < 0
 	}
+	*/
 }
