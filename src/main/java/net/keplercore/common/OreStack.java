@@ -28,7 +28,7 @@ public final class OreStack
 
     public OreStack(Item item)
     {
-        this(item.itemID, 1);
+        this(Item.func_150891_b(item), 1);
     }
 
     public OreStack(Item item, int size)

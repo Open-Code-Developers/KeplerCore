@@ -17,7 +17,9 @@ public class InventoryHelper
 		double d1 = (world.rand.nextFloat() * f1) + (1.0F - f1) * 0.5D;
 		double d2 = (world.rand.nextFloat() * f1) + (1.0F - f1) * 0.5D;
 		EntityItem entityitem = new EntityItem(world, i + d, j + d1, k + d2, stack);
-		entityitem.delayBeforeCanPickup = 10;
+		//TODO pick one
+		entityitem.func_145769_d(10);
+		entityitem.func_145781_i(10);
 
 		world.spawnEntityInWorld(entityitem);
 	}

@@ -1,15 +1,13 @@
 package net.keplercore.lib.schematic;
 
 import net.minecraft.block.Block;
-import net.minecraft.block.BlockFluid;
+import net.minecraft.block.BlockLiquid;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 import net.minecraftforge.fluids.IFluidBlock;
 
-
 public class SchematicBlock implements Comparable<SchematicBlock>
 {
-
 	public SchematicBlock(int i, int j, int k, int blockID, int blockMeta)
 	{
 		this.i = i;
@@ -26,18 +24,18 @@ public class SchematicBlock implements Comparable<SchematicBlock>
 
 	private int i, j, k, blockID, blockMeta;
 
-	public boolean buildBlock(World world, int x, int y, int z)
+	/*public boolean buildBlock(World world, int x, int y, int z)
 	{
 		return world.setBlock(x + i, y + j, z + k, blockID, blockMeta, 3);
-	}
+	}*/
 
 	public boolean isBuild(World world, int x, int y, int z)
 	{
 		if (isFluid())
 		{
-			return Block.blocksList[world.getBlockId(x + i, y + j, z + k)] instanceof BlockFluid;
+			return world.func_147439_a(x + i, y + j, z + k) instanceof BlockLiquid;
 		}
-		return world.getBlockId(x + i, y + j, z + k) == blockID && world.getBlockMetadata(x + i, y + j, z + k) == blockMeta;
+		return Block.func_149682_b(world.func_147439_a(x + i, y + j, z + k)) == blockID && world.getBlockMetadata(x + i, y + j, z + k) == blockMeta;
 	}
 
 	public boolean isAir()
@@ -48,8 +46,8 @@ public class SchematicBlock implements Comparable<SchematicBlock>
 
 	public boolean isFluid()
 	{
-		return Block.blocksList[blockID] instanceof BlockFluid
-			|| Block.blocksList[blockID] instanceof IFluidBlock;
+		return Block.func_149729_e(blockID) instanceof BlockLiquid
+			|| Block.func_149729_e(blockID) instanceof IFluidBlock;
 	}
 
 	public void readFromNBT(NBTTagCompound compound)

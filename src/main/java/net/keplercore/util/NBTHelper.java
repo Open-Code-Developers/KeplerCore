@@ -26,12 +26,12 @@ public class NBTHelper
 
 	public static ItemStack[] readItemStackFromNBT(NBTTagCompound compound, String key)
 	{
-		NBTTagList list = compound.getTagList(key);
+		NBTTagList list = (NBTTagList) compound.getTag(key);
 		ItemStack[] retVal = new ItemStack[list.tagCount()];
 
 		for (int i = 0; i < list.tagCount(); ++i)
 		{
-			NBTTagCompound tagList = (NBTTagCompound) list.tagAt(i);
+			NBTTagCompound tagList = (NBTTagCompound) list.func_150305_b(i);
 			byte slot = tagList.getByte("Slot");
 
 			if (slot > -1)
