@@ -23,27 +23,22 @@ public final class OreStack
 
     public OreStack(Block block, int size)
     {
-        this(new ItemStack(block), size);
+        this(new ItemStack(block, size));
     }
 
     public OreStack(Item item)
     {
-        this(Item.func_150891_b(item), 1);
+        this(item, 1);
     }
 
     public OreStack(Item item, int size)
     {
-        this(new ItemStack(item), size);
+        this(new ItemStack(item, size));
     }
     
     public OreStack(ItemStack stack)
     {
-    	this(stack, 1);
-    }
-    
-    public OreStack(ItemStack stack, int size)
-    {
-    	this(OreDictionary.getOreID(stack), size);
+    	this(OreDictionary.getOreID(stack), stack.stackSize);
     }
     
     public OreStack(String name)
@@ -74,11 +69,11 @@ public final class OreStack
     /**
      * Remove the argument from the stack size. Return a new stack object with argument size.
      */
-    public OreStack splitStack(int par1)
+    public OreStack splitStack(int n)
     {
-        OreStack OreStack = new OreStack(oreID, par1);
+        OreStack OreStack = new OreStack(oreID, n);
 
-        stackSize -= par1;
+        stackSize -= n;
         return OreStack;
     }
 
@@ -115,38 +110,36 @@ public final class OreStack
      */
     public OreStack copy()
     {
-        OreStack OreStack = new OreStack(oreID, stackSize);
-
-        return OreStack;
+        return new OreStack(oreID, stackSize);
     }
 
     /**
      * compares OreStack argument1 with OreStack argument2; returns true if both OreStacks are equal
      */
-    public static boolean areOreStacksEqual(OreStack par0OreStack, OreStack par1OreStack)
+    public static boolean areOreStacksEqual(OreStack stack1, OreStack stack2)
     {
-        return par0OreStack == null && par1OreStack == null ? true : (par0OreStack != null && par1OreStack != null ? par0OreStack.isOreStackEqual(par1OreStack) : false);
+        return stack1 == null && stack2 == null ? true : (stack1 != null && stack2 != null ? stack1.isOreStackEqual(stack2) : false);
     }
 
     /**
      * compares OreStack argument to the instance OreStack; returns true if both OreStacks are equal
      */
-    private boolean isOreStackEqual(OreStack par1OreStack)
+    private boolean isOreStackEqual(OreStack stack)
     {
-        return stackSize != par1OreStack.stackSize ? false : (oreID != par1OreStack.oreID ? false : true);
+        return stackSize != stack.stackSize ? false : (oreID != stack.oreID ? false : true);
     }
     
-    public boolean isItemEqual(OreStack par1OreStack)
+    public boolean isItemEqual(OreStack stack)
     {
-        return oreID == par1OreStack.oreID;
+        return oreID == stack.oreID;
     }
 
     /**
      * Creates a copy of a OreStack, a null parameters will return a null.
      */
-    public static OreStack copyOreStack(OreStack par0OreStack)
+    public static OreStack copyOreStack(OreStack stack)
     {
-        return par0OreStack == null ? null : par0OreStack.copy();
+        return stack == null ? null : stack.copy();
     }
 
     public String toString()
